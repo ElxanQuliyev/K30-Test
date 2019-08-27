@@ -1,0 +1,94 @@
+﻿@model IEnumerable<test2.Models.BasicInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-condensed table-responsive">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FbLogin)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TwitterLogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstaLogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkedLogin)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.OpenDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.AdminEmail)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AdminPassword)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FbLogin)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TwitterLogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstaLogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LinkedLogin)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CloseDate)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminEmail)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AdminPassword)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BasicInfoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BasicInfoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BasicInfoId })
+        </td>
+    </tr>
+}
+
+</table>

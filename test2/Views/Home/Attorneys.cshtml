@@ -1,0 +1,55 @@
+﻿@using test2.TextSource;
+@using test2.ViewModels.Default;
+@model DefaultViewModel
+@{
+    ViewBag.Tittle = "Attorneys";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="mainNews" style="background-image:url()">
+    <div class="imgOverlay"></div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="middleService">
+                <div class="iconTop">
+                    <i class="icons fa fa-balance-scale"></i>
+                </div>
+                <h1 class="serTittle">@RHome.MNews</h1>
+                <div class="breadCrump">
+                    <ol>
+                        <li><a href="@Url.Action("Index", "Home")">@RHome.MHome</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="attorneyList">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.attorney)
+                {
+                    <div class="col-md-4 attorPad">
+                        <div class="dropSlide">
+                            <img src="@item.AttorneyPhoto" class="img-responsive">
+                            <div class="aboutAllView">
+                                <div class="aboutTeamMember">
+                                    <h5> @item.FirstName @item.Lastname <em>@item.WorkSector </em></h5>
+                                </div>
+                                <div class="aboutProfile">
+                                    <div class="mainRead">
+                                        <a href="@Url.Action("Attorneyinfo", "Home", new { id = item.AttorneyId })" class="read-more">@RGlobal.MReadMore</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Scripts/teamRead.js"></script>
+}

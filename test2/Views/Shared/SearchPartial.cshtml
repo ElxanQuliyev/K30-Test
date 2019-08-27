@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@using (Html.BeginForm("SearchResult", "Home", FormMethod.Get, new { encytpe = "multipart/form-data", @class = "search-form" }))
+{
+    <input id="search" type="search" placeholder="Search" class="search-field" name="SearchText" value="">
+    <button type="submit" class="search-submit">
+        <span class="search-icon">Search</span>
+        <i class="fas fa-gavel"></i>
+    </button>
+}
+

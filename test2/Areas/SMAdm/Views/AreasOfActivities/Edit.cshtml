@@ -1,0 +1,79 @@
+﻿@model test2.Models.AreasOfActivity
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AreasOfActivity</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AreasOfActivityId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Headline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AreasIcon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AreasIcon, new { htmlAttributes = new { @class = "form-control", @id = "iconForm", @type = "hidden" } })
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="iconsHolder">
+                            <i class="fas fa-people-carry"></i>
+                            <i class="fas fa-home"></i>
+                            <i class="fas fa-gavel"></i>
+                            <i class="fas fa-lightbulb"></i>
+                            <i class="fas fa-users"></i>
+                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-star-half"></i>
+                            <i class="fas fa-balance-scale"></i>
+                            <i class="fas fa-info"></i>
+                            <i class="fas fa-hourglass-half"></i>
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.AreasIcon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LanguageId, "LanguageId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LanguageId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

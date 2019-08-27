@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="dropdown woo-account-wrapper pull-right">
+            <a href="" class="btn btn-default slz-btnb" data-toggle="dropdown" routeValues="null"><span class="btn-text">@User.Identity.GetUserName()</span></a>
+            <ul class="dropdown-menu">
+                <li class="woo-login"><a href="@Url.Action("", "Account", new { id = Session["userid"] })" class="item"><i class="fa fa-cog fa-fw"></i> Account Setting</a></li>
+                <li class="divider"></li>
+                <li class="woo-login">
+                    <a class="item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i>  Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    }
+}
+else
+{
+    <div class="col-md-2 col-sm-2 col-xs-2 pull-right">
+        <div class="row">
+            <div class="dropdown woo-account-wrapper pull-right">
+            <a href="@Url.Action("Login", "Account")" class="btn btn-default slz-btnb"><span class="btn-text">@RHome.MyAccount</span></a>
+        </div>
+        </div>
+        
+    </div>
+}

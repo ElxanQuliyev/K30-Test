@@ -1,0 +1,17 @@
+﻿@model IEnumerable<test2.Models.AreasOfActivity>
+
+@foreach (var item in Model)
+{
+    <li>
+        @*<i class="fa fa-angle-double-right" aria-hidden="true"></i>*@
+        <a href="@Url.Action("AreasDetail", "Home", new { id = item.AreasOfActivityId ,title=Html.ClearnUrl(item.Headline)})">@item.Headline</a>
+    </li>
+
+    <div class="divider"></div>
+}
+<li>
+    @*<i class="fa fa-angle-double-right" aria-hidden="true"></i>*@
+    <a href="@Url.Action("Services", "Home")">@RHome.MOthers</a>
+</li>
+
+

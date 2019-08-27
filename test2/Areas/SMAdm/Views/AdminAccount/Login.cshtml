@@ -1,0 +1,44 @@
+﻿@model test2.Models.BasicInfo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="~/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/loginForm.css">
+</head>
+<body>
+    <div class="vid-container">
+        <div class="inner-container">
+
+            <div class="box">
+                @if (ViewBag.AdminLoginError != null)
+                {
+                    <div class="alert alert-info">
+                        @ViewBag.AdminLoginError
+                    </div>
+                }
+                <h1>Login</h1>
+                @using (Html.BeginForm("Login", "AdminAccount", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.AdminEmail, new { htmlAttributes = new { @class = "form-control", @type = "email", @required = "", @placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.AdminEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.AdminPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @required = "", @placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.AdminPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <input class="btn btn-default btn-lg logformBtn" type="submit" value="Sign in" />
+                }
+
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/loginForm.js"></script>
+</body>
+</html>

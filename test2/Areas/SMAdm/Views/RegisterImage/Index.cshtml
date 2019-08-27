@@ -1,0 +1,31 @@
+﻿@model IEnumerable<test2.Models.RegisterImageTB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Register Background")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@item.RegisterPhoto" width="95" class="img-responsive" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RegisterImageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RegisterImageId }) |
+        </td>
+    </tr>
+}
+
+</table>

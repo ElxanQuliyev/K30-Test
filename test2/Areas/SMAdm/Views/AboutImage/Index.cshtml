@@ -1,0 +1,31 @@
+﻿@model IEnumerable<test2.Models.AboutUsTB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped table-bordered" id="editable-datatable">
+    <tr>
+        <th>
+            @Html.Label("About Image")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr >
+        <td>
+            <img width="95" src="@item.AboutUsPhoto" />
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AboutUsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AboutUsId }) |
+        </td>
+    </tr>
+}
+
+</table>

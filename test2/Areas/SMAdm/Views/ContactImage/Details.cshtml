@@ -1,0 +1,27 @@
+﻿@model test2.Models.ContactTB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ContactTB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactPhoto)
+        </dt>
+
+        <dd>
+            <img class="img-responsive" width="95" src="@Model.ContactPhoto" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

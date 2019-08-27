@@ -1,0 +1,66 @@
+﻿@model IEnumerable<test2.Models.Article>
+<div class="col-md-4 postListMain ">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="serviceSearch">
+                    @Html.Partial("SearchPartial")
+                </div>
+                <div class="newsResentPost">
+                    @foreach (var item in Model)
+                    {
+                        <div class="row mainElement">
+                            <div class="col-md-4 ">
+                                <div class="row">
+                                    <div class="block-image">
+                                        <a class="link" href="@Url.Action("BlogDetail","Home",new { id=item.ArticleId,title=Html.ClearnUrl(item.Headline)})"></a>
+                                        @if (item.ArticlePhoto != null)
+                                        {
+                                            <div class="promo-box-image">
+                                                <img src="@item.ArticlePhoto" alt="@item.Headline" class="img-responsive img-thumbnail" />
+                                            </div>
+                                            <div class="promo-box-content">
+
+                                                <i class="icons-image far fa-image fa-2x "></i>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            if (item.IframeLink != null)
+                                            {
+                                                <div class="promo-box-image">
+                                                    <img id="img" class="img-thumbnail img-responsive img-full" alt="@item.Headline" style="width:100%" src="https://i.ytimg.com/vi/@item.IframeLink/hqdefault.jpg">
+                                                </div>
+                                                <div class="promo-box-content" style="background-color: transparent;" loaded="">
+                                                    <i class="icons-video far fa-play-circle fa-2x"></i>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="block-title">
+                                    @if (item.Headline.Length > 50)
+                                    {
+                                        <a href="@Url.Action("BlogDetail", "Home", new { id = item.ArticleId,title=Html.ClearnUrl(item.Headline) })">
+                                            @Html.Raw(item.Headline.Substring(0, 50))...
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("BlogDetail", "Home", new { id = item.ArticleId ,title=Html.ClearnUrl(item.Headline)})">
+                                            @Html.Raw(item.Headline)
+                                        </a>
+
+                                    }
+                                    <div class="clearfix"></div>
+                                    <p class=" text-muted"><em><small><i class="glyphicon glyphicon-time fa-fw"></i>@String.Format("{0:MMMM dd, yyyy}", item.CreateDate) </small></em></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+

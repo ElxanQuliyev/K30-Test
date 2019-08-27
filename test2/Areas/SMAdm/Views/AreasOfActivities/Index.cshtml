@@ -1,0 +1,48 @@
+﻿@model IEnumerable<test2.Models.AreasOfActivity>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreasIcon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LanguageTB.CultureCode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headline)
+            </td>
+
+            <td>
+                <i class="fas @item.AreasIcon fa-2x" aria-hidden="true"></i>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageTB.CultureCode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AreasOfActivityId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AreasOfActivityId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AreasOfActivityId })
+            </td>
+        </tr>
+    }
+
+</table>

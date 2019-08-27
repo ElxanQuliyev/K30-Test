@@ -1,0 +1,81 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<test2.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table  table-box table-hover table-responsive">
+    <tr>
+        <th>
+            @Html.Label("Headline")
+        </th>
+
+
+        <th>
+            @Html.Label("Create Date")
+        </th>
+
+        <th>
+            @Html.Label("Article Photo")
+        </th>
+        <th>
+            @Html.Label("Youtube Iframe")
+        </th>
+        <th>
+            @Html.Label("Culture Code")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Headline)
+            </td>
+
+
+            <td>
+                @String.Format("{0:MMMM dd, yyyy}", item.CreateDate)
+            </td>
+            <td>
+                @if (item.ArticlePhoto != null)
+                {
+                    <img src="@item.ArticlePhoto" class="img-responsive" width="75" />
+                }
+            </td>
+            <td>
+                @if (item.IframeLink != null)
+                {
+                        <yt-img-shadow class="style-scope ytd-thumbnail no-transition" style="background-color: transparent;" loaded="">
+                            <img id="img" class="style-scope yt-img-shadow img-thumbnail img-responsive" alt="" height="50" width="100" src="https://i.ytimg.com/vi/@item.IframeLink/hqdefault.jpg">
+                        </yt-img-shadow>
+                 }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageTB.CultureCode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ArticleId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ArticleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ArticleId })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="row">
+    <div class="col-md-8 text-center">
+        <div class="pagedList pagination">
+            @Html.PagedListPager(Model, Page => Url.Action("Index", "AdminArticle", new { Page }), PagedListRenderOptions.Classic)
+        </div>
+    </div>
+</div>

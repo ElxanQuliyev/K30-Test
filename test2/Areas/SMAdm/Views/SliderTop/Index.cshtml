@@ -1,0 +1,52 @@
+﻿@model IEnumerable<test2.Models.SliderTopTB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LanguageTB.CultureCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderContent1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderContent2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderTopImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LanguageTB.CultureCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SliderContent1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SliderContent2)
+        </td>
+        <td>
+            <img class="img-thumbnail" src="@item.SliderTopImage" width="75" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SliderTopId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SliderTopId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SliderTopId })
+        </td>
+    </tr>
+}
+
+</table>

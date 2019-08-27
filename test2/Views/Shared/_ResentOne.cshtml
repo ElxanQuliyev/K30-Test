@@ -1,0 +1,52 @@
+﻿@model IEnumerable<test2.Models.Article>
+<div class="col-md-8 postMain">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="news-layout">
+                <div class="block-image">
+                    <a class="link" href="@Url.Action("BlogDetail","Home",new { id=item.ArticleId,title=Html.ClearnUrl(item.Headline)})"></a>
+
+                    @if (item.ArticlePhoto != null)
+                    {
+                        <div class="promo-box-image">
+                            <img src="@item.ArticlePhoto" alt="@item.Headline" class="img-responsive img-full img-thumbnail" />
+                        </div>
+                        <div class="promo-box-content">
+                            <i class="icons-image far fa-image fa-5x"></i>
+                        </div>
+                    }
+                    else
+                    {
+                        if (item.IframeLink != null)
+                        {
+                            <div class="promo-box-image">
+                                <img id="img" class="img-thumbnail img-responsive img-full" alt="@item.Headline" height="80" style="width:100%" src="https://i.ytimg.com/vi/@item.IframeLink/hqdefault.jpg">
+                            </div>
+                            <div class="promo-box-content">
+                                <i class="icons-video far fa-play-circle fa-5x"></i>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="vc_empty_space"></div>
+                <div class="blockContent">
+                    <div class="blockTop">
+                        <a href="@Url.Action("BlogDetail", "Home", new { id = item.ArticleId,title=Html.ClearnUrl(item.Headline) })" class="layout-tittle">@item.Headline</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    @if (item.ArticleContent.Length > 220)
+                    {
+                        @Html.Raw(item.ArticleContent.Substring(0, 220));
+                    }
+                    else
+                    {
+                        @Html.Raw(item.ArticleContent)
+                    }
+                </div>
+                <div class="clearfix"></div>
+                <a class="read-more" href="@Url.Action("BlogDetail", "Home", new { id = item.ArticleId,title=Html.ClearnUrl(item.Headline) })">@RGlobal.MReadMore<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        }
+    </div>

@@ -1,0 +1,51 @@
+﻿@model test2.Models.SliderTopTB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SliderTopTB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LanguageTB.CultureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanguageTB.CultureCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderContent1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderContent1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderContent2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderContent2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderTopImage)
+        </dt>
+
+        <dd>
+            <img class="img-thumbnail" src="@item.SliderTopImage" width="75" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SliderTopId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

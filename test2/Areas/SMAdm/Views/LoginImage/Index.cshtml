@@ -1,0 +1,32 @@
+﻿@model IEnumerable<test2.Models.LoginImageTB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Login Background")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img class="img-responsive" width="95" src="@item.LoginPhoto" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoginImageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoginImageId }) |
+           
+        </td>
+    </tr>
+}
+
+</table>

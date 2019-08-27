@@ -1,0 +1,107 @@
+﻿@model test2.Models.BasicInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BasicInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FbLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FbLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstaLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstaLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkedLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkedLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminEmail)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.AdminPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminPassword)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BasicInfoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

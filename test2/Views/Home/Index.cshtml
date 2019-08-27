@@ -1,0 +1,271 @@
+﻿@using test2.ViewModels.Default;
+@model DefaultViewModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--Slider Top-->
+<section id="Slider_Container">
+    <div id="first-slider">
+        <div id="carousel-example-generic" class="carousel slide carousel-fade mainCarousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @{
+                    var slideCount = 0;
+                    var c = 0;
+                    foreach (var item in Model.sliderTop)
+                    {
+                        var itemSlide = c++ == 0 ? "active" : " ";
+                        <li data-target="#carousel-example-generic" data-slide-to="@slideCount" class="@itemSlide"></li>
+                        slideCount++;
+
+                    }
+                }
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!-- Item 1 -->
+                @{
+                    var count = 0;
+                    var i = 0;
+                    foreach (var item in Model.sliderTop)
+                    {
+                        count++;
+                        var itemClass = i++ == 0 ? "item active" : "item";
+                        <div class="col-md-12 smItem @itemClass slide@(count)" style="background-image:url(@item.SliderTopImage)">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-9 col-sm-9 col-xs-9 text-left">
+                                        <h4 data-animation="animated bounceInDown">@Html.Raw(item.SliderContent1)</h4>
+                                        <p data-animation="animated bounceInUp">@Html.Raw(item.SliderContent2)</p>
+                                        <button type="button" data-animation="animated zoomInLeft" class="btn btn-primary slzBtn slz-btn1 btnPad">@RGlobal.MReadMore</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                }
+                <!-- End Wrapper for slides-->
+
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <i class="fa fa-long-arrow-left"></i><span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!--/Slider Top-->
+<!--How We Are-->
+<section id="HowWeAre">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="vc_empty_space"></div>
+                <div class="col-md-12">
+                    <div class="practiceTop">
+                        <img class="responsive" src="img/title-icon-1.png">
+                        <div class="clearfix"></div>
+                        <span class="subtitle">@RHome.MWELCOME</span>
+                        <h2 class="news-title">@RHome.MWHATWEDO</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="vc_empty_space"></div>
+            <div class="vc_empty_space"></div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="headingLeft">
+                                    @if (Model.howWeAre.Description.Length > 600)
+                                    {
+                                        <small>@Html.Raw(Model.howWeAre.Description.Substring(0, 600)) [...]</small>
+                                    }
+                                    else
+                                    {
+                                        <small>@Html.Raw(Model.howWeAre.Description)</small>
+                                    }
+                                    <div class="vc_empty_space"></div>
+                                    <div class="col-md-12 text-l">
+                                        <div class="row">
+                                            <div type="button" class="btn btn-primary slz-banner-btn1 twoBtn">
+                                                <a style="color:#fff;text-decoration:none;padding:12px 25px;" href="@Url.Action("About", "Home")">Read more</a>
+                                                <div class="insider"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="headingRight">
+                                    <img src="@Model.howWeAre.HPhoto" alt="" class="img-responsive">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/How We Are-->
+<!--Our Team-->
+<section id="OurTeam">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="practiceTop">
+                    <img class="responsive" src="img/title-icon-1.png">
+                    <div class="clearfix"></div>
+                    <span class="subtitle">@RHome.MOURATTORNEYS</span>
+                    <h2 class="titles">@RHome.MAttorney</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row owl-carousel">
+
+            @foreach (var item in Model.attorney)
+            {
+                <div class=" item">
+                    <div class="dropSlide">
+                        <img src="@item.AttorneyPhoto" class="img-responsive">
+                        <div class="aboutAllView">
+                            <div class="aboutTeamMember">
+                                <h5> @item.FirstName @item.Lastname <em>@item.WorkSector </em></h5>
+                            </div>
+                            <div class="aboutProfile">
+                                <div class="mainRead">
+                                    <a href="@Url.Action("AttorneySingle", "Home", new { id = item.AttorneyId })" class="read-more">@RGlobal.MReadMore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--/Our Team-->
+<div class="clearfix"></div>
+<section id="PracticeArea">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="practiceTop">
+                        <img class="responsive" src="img/title-icon-1.png">
+                        <div class="clearfix"></div>
+                        <span class="subtitle">@RHome.MWHATWEDO</span>
+                        <h2 class="news-title">@RHome.MAREASOFACTIVITY</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="clearfix"></div>
+                @foreach (var item in Model.areasOfActivity)
+                {
+
+                    <div class="mainPractice col-md-4 col-sm-6 col-xs-12">
+                        <div class="clearfix"></div>
+
+                        <div class="practiceItem">
+                            <div class="practice-box">
+                                <div class="icon-cell">
+                                    <i class="fas @item.AreasIcon fa-2x" aria-hidden="true"></i>
+                                </div>
+                                <div class="wrapper-info">
+                                    <a href="@Url.Action("PracticeDetails", "Home", new { id = item.AreasOfActivityId,title=Html.ClearnUrl(item.Headline) })" class="practice-tittle">@item.Headline</a>
+                                </div>
+                                <div class="description">
+                                    <p>
+                                        @if (item.Description.Length > 100)
+                                        {
+                                            <span>
+                                                <small>
+                                                    @Html.Raw(item.Description.Substring(0, 100))
+                                                </small>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>
+                                                <small>
+                                                    @Html.Raw(item.Description)...
+                                                </small>
+                                            </span>
+
+                                        }
+                                    </p>
+
+                                </div>
+                                <a class="read-more" href="@Url.Action("PracticeDetails", "Home", new { id = item.AreasOfActivityId,title=Html.ClearnUrl(item.Headline) })">@RGlobal.MReadMore<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class=" clearfix"> </div>
+            <div style="text-align:center">
+                <div type="button" class="btn btn-primary slz-banner-btn1 twoBtn">
+                    <a style="color:#fff;text-decoration:none;padding:12px 25px;" href="@Url.Action("Index", "AllServices")">Read more</a>
+                    <div class="insider"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!--Firm News-->
+<hr />
+
+<section id="FirmNews">
+    <div id="newsInfo">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="practiceTop">
+                            <img class="responsive" src="img/title-icon-1.png">
+                            <div class="clearfix"></div>
+                            <span class="subtitle">@RHome.MUPDATECOMING</span>
+                            <h2 class="news-title">@RHome.MOurFirmNews</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                             <div class="newsContent">
+
+                                @{
+                                    Html.RenderAction("_ResentOne", Model.article);
+                                }
+                                @{
+                                    Html.RenderAction("_Postlist", Model.article);
+                                }
+                            </div>
+                            <div class="postReadMe">
+                                <div type="button" class="btn btn-primary slz-banner-btn1 twoBtn">
+                                    <a style="color:#fff;text-decoration:none;padding:12px 25px;" href="@Url.Action("BlogList", "Home")">Read more</a>
+                                    <div class="insider"></div>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</section>
+<!--/Firm News-->
+@section scripts{
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/mainOwl.js"></script>
+    <script src="~/Scripts/teamRead.js"></script>
+}

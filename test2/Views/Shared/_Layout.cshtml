@@ -1,0 +1,271 @@
+﻿@using test2.TextSource;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="bW-Uuxzd1MVaVk3sS91-OM0XLhM0hcvrtbwjWqt3nNU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/BlueLogo.png">
+    <title>@ViewBag.Title - Sabir and Partners</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="Header">
+
+        <section id="slz-header-wrapper ">
+            <div class="container-fluid">
+                <div class="row">
+                    <!--TopBar-->
+                    <section id="TopBar">
+                        <div class="slz-header-topbar">
+                            <div class="container">
+                                <div class="slz-topbar-list pull-left">
+                                    <div class="customize-icon social">
+                                        <a class="text" target="_blank" href="#">
+                                            <i class="fa fa-envelope">
+                                            </i> <small>info@swlabs.co</small>
+                                        </a>
+                                        <span class="text">
+                                            <i class="fa fa-phone">
+                                            </i> (+1)369-258-147
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-md-push-6 col-xs-push-0 col-sm-push-0 col-sm-2 hidden-xs langs ">
+                                    <ul class="list-unstyled list-inline">
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "en" })">en</a></li>
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "az" })">az</a></li>
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "ru" })">ru</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-2 pull-right">
+                                    <div class="row">
+                                        @Html.Partial("_LoginPartial")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </section>
+                    <!--/TopBar-->
+
+                    <section id="TopMenu">
+                        <div class="container-fluid">
+                            <div class="container SliderContain">
+                                <div class="overlay"></div>
+                                <label for="btn-menu" class="icon-menu ">
+                                    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                                        <span class="hamb-top"></span>
+                                        <span class="hamb-middle"></span>
+                                        <span class="hamb-bottom"></span>
+                                    </button>
+                                </label>
+                                <div class="pull-left">
+                                    <a href="@Url.Action("Index", "Home")"><img src="~/img/BlueLogo.png" width="99" alt="Sabir and Partners" class="img-responsive"></a>
+                                </div>
+                                <nav class="menu pull-right">
+                                    <ul class="LangSet">
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "en" })">en</a></li>
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "az" })">az</a></li>
+                                        <li> <a href="@Url.Action("Change","Language",new { LanguageAbbrevation = "ru" })">ru</a></li>
+                                    </ul>
+                                    <div class="search-form mobile flexbox">
+                                        <form id="form-search-mobile" action="@Url.Action("SearchResult", "Home")" method="GET" autocomplete="off">
+                                            <input type="text" name="key" placeholder="Saytda axtar">
+                                            <input type="hidden" name="filter" value="all">
+                                            <button type="submit">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <ul class="mainul">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Attorneys", "Home")">@RHome.MAttorney</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("About", "Home")">@RHome.MAboutUs</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("BlogList", "Home")">@RHome.MNews</a>
+                                        </li>
+                                        <li class="submenu">
+                                            <a href="#">@RHome.MAREASOFACTIVITY <span class="caret"></span></a>
+                                            <ul class="subdrop">
+                                                @{
+
+                                                    Html.RenderAction("LastAreasOfActivity", "Home");
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Contact", "Home")">@RHome.MContact</a>
+                                        </li>
+                                        
+                                        <li class="dropdown pull-right slz-btn-search slzBtnItem">
+                                            <a href="#" class=" hidden-xs" data-toggle="dropdown"><i class="icons fa fa-search"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="nav-search ">
+                                                    <form action="@Url.Action("SearchResult", "Home")" method="get" class="search-form">
+                                                        <input id="searchNm" type="search" placeholder="Search..." class="search-field addsearch" name="SearchText" value="">
+                                                        <button type="submit" class="search-submit">
+                                                            <span class="search-icon">Search</span>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </nav>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @RenderBody()
+        <section id="Footer">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="footerTop">
+                                        <a href="index.html"><img src="~/img/smLightLogo.png" alt="" class="img-responsive"></a>
+                                    </div>
+                                </div>
+                                <div class="vc_empty_space"> </div>
+                            </div>
+                            <p class="small-info"><small>Ut bacon filet mignon frankfurter venison shank sed quis short ribs lorem. Shank and incididunt ea bacon. doner boudin short loin excepteur pork. belly qui ribeye salami</small></p>
+                            <div class="social-group">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-icon ">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-icon ">
+                                    <i class="fab fa-google-plus-g" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-icon ">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-icon "></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="footerLogo">@RHome.MGetInTouch</h3>
+                            <div class="footerDivider"></div>
+                            <div class="small-teaser">
+                                <div class="teaser-icon">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </div>
+                                <div class="teaser-text">
+                                    <a href="#">2551 Alfred Drive Brooklyn, NY</a>
+                                </div>
+                            </div>
+                            <div class="small-teaser">
+                                <div class="teaser-icon">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="teaser-text">
+                                    <a href="#">support@thejustice.com</a>
+                                </div>
+                            </div>
+                            <div class="small-teaser">
+                                <div class="teaser-icon">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div class="teaser-text">
+                                    <a href="#">718-250-4467</a>
+                                </div>
+                            </div>
+                            <div class="small-teaser">
+                                <div class="teaser-icon">
+                                    <i class="far fa-clock" aria-hidden="true"></i>
+                                </div>
+                                <div class="teaser-text">
+                                    <a href="#">24 hours a day, 7 days a week</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="footerLogo">@RHome.MAREASOFACTIVITY</h3>
+                            <div class="footerDivider"></div>
+                            <div class="slz-widget ">
+                                <ul id="menu-footer" class="list-unstyled">
+                                    <li>
+                                        @{
+
+                                            Html.RenderAction("LastAreasOfActivity", "Home");
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/Footer-->
+        <!--Site Designed-->
+        <div class="slz-footer-bottom">
+            <div class="container">
+                <div class="item">
+                    <div class="pull-left col-md-4 col-xs-12">
+                        <p><b>All Rights Reserved © 2018 Sabir and Partners</b> </p>
+                    </div>
+                    <div class="slz-name col-md-3 col-md-push-4 col-xs-push-0">
+                        © Site created by: <a href="">Elxan Quliyev</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Site Designed-->
+        <!--/Header-->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/mainNav")
+    <!--Start of Tawk.to Script-->
+    @*<script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5a40564ebbdfe97b137fd288/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>*@
+    <!--End of Tawk.to Script-->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

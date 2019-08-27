@@ -1,0 +1,45 @@
+﻿@model test2.Models.HowWeAreTB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HowWeAreTB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+   
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HPhoto)
+        </dt>
+
+        <dd>
+            <img src="@Model.HPhoto" alt="" width="95" class="img-thumbnail" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanguageTB.CultureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanguageTB.CultureCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HowWeAreID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

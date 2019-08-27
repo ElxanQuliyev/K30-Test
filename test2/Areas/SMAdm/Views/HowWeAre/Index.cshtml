@@ -1,0 +1,43 @@
+﻿@model IEnumerable<test2.Models.HowWeAreTB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>How We Are</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LanguageTB.CultureCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+          
+        </td>
+        <td>
+            <img src="@item.HPhoto" class="img-thumbnail" width="75" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LanguageTB.CultureCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HowWeAreID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HowWeAreID }) |
+        </td>
+    </tr>
+}
+
+</table>

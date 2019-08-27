@@ -1,0 +1,28 @@
+﻿@model test2.Models.NewsTB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/SMAdm/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NewsTB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("News Photo")
+        </dt>
+
+        <dd>
+            <img src="@Model.NewsPhoto" class="img-responsive" width="100" />
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NewsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
